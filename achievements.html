@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Peta Hema Sai Reddy</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .achievement-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            background: var(--card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
+        }
+        
+        .achievement-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .achievement-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+            padding-bottom: 0.75rem;
+        }
+        
+        .achievement-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .achievement-meta {
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .achievement-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .achievement-image-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .achievement-image {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+        }
+        
+        .achievement-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        @media (min-width: 768px) {
+            .achievement-card {
+                flex-direction: row;
+            }
+            
+            .achievement-content {
+                flex: 7;
+            }
+            
+            .achievement-image-container {
+                flex: 3;
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .achievement-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+      <!-- Header -->
+      <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Peta Hema Sai Reddy</a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link ">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link active">Achievements</a></li>
+                  
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    
+                    <li><a href="certificates.html" class="nav-link">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Achievements & Awards</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">A showcase of my accomplishments, leadership roles, and recognition throughout my academic and professional journey.</p>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section">
+        <div class="container">
+            <!-- Hackathon Winner - Aswini Technology AI Hackathon -->
+            <div class="achievement-card animate-fadeInUp">
+                <div class="achievement-content">
+                    <h2 class="achievement-title">Hackathon Winner - Aswini Technology AI Hackathon</h2>
+                    <div class="achievement-meta">
+                        <i class="fas fa-building"></i> Organized by: Aswini Technology, Bangalore in collaboration with IBM and Mohanbabu University
+                    </div>
+                    <p class="achievement-description">
+                        <strong>Event Focus:</strong> The hackathon was entirely based on Artificial Intelligence (AI) and provided an exciting platform for participants to showcase innovative AI solutions.
+                    </p>
+                    <p class="achievement-description">
+                        <strong>Achievement:</strong> Hemasai's team emerged as the winners, standing out with their cutting-edge AI project that addressed real-world problems. The team's success was recognized for its creative approach, technical proficiency, and ability to deliver impactful AI-based solutions in a competitive environment.
+                    </p>
+                </div>
+                <div class="achievement-image-container">
+                    <div class="achievement-image">
+                        <img src="1.jpg" alt="Aswini Technology Hackathon Certificate">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Secretary of DATA (Data Science and AI Technical Association) -->
+            <div class="achievement-card animate-fadeInUp delay-1">
+                <div class="achievement-content">
+                    <h2 class="achievement-title">Secretary of DATA (Data Science and AI Technical Association)</h2>
+                    <p class="achievement-description">
+                        As the Secretary, Hemasai has been pivotal in leading and organizing a range of events, workshops, and activities under the umbrella of the DATA club. This role involved close collaboration with industry experts, faculty, and students to promote the field of Data Science and Artificial Intelligence.
+                    </p>
+                    <p class="achievement-description">
+                        Hemasai has successfully organized multiple workshops and learning sessions that have contributed to enhancing the club's reputation and providing valuable educational experiences to students.
+                    </p>
+                </div>
+                <div class="achievement-image-container">
+                    <div class="achievement-image">
+                        <img src="4.jpg" alt="Secretary of DATA Club">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MM2K24 Hackathon (Organized by Hemasai and Afrin Banu) -->
+            <div class="achievement-card animate-fadeInUp delay-2">
+                <div class="achievement-content">
+                    <h2 class="achievement-title">MM2K24 Hackathon (Organized by Hemasai and Afrin Banu)</h2>
+                    <div class="achievement-meta">
+                        <i class="fas fa-users"></i> Organized by: Hemasai and Afrin Banu, in collaboration with Racloop Pvt. Ltd.
+                    </div>
+                    <p class="achievement-description">
+                        <strong>Event Focus:</strong> This event brought together talented participants to compete in innovative problem-solving challenges. The hackathon was in collaboration with Racloop Pvt. Ltd., offering real-world problem-solving scenarios, hands-on learning, and networking opportunities for students.
+                    </p>
+                    <p class="achievement-description">
+                        <strong>Achievement:</strong> The event was a major success, featuring high engagement from participants and prominent guest speakers, and it contributed to fostering the development of future tech leaders.
+                    </p>
+                </div>
+                <div class="achievement-image-container">
+                    <!-- <div class="achievement-image">
+                        <img src="2.jpg" alt="MM2K24 Hackathon Certificate">
+                    </div> -->
+                    <div class="achievement-image">
+                        <img src="3.jpg" alt="MM2K24 Hackathon Team Photo">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Class Representative (CR) -->
+            <div class="achievement-card animate-fadeInUp delay-3">
+                <div class="achievement-content">
+                    <h2 class="achievement-title">Class Representative (CR)</h2>
+                    <p class="achievement-description">
+                        Hemasai serves as the Class Representative, where responsibilities include acting as a liaison between the students and faculty, addressing academic concerns, and organizing various class-related activities.
+                    </p>
+                    <p class="achievement-description">
+                        The role also includes providing leadership to the class and ensuring smooth communication for the effective running of both academic and extracurricular activities.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Sports Achievements -->
+            <div class="achievement-card animate-fadeInUp delay-4">
+                <div class="achievement-content">
+                    <h2 class="achievement-title">Sports Achievements</h2>
+                    <p class="achievement-description">
+                        <strong>Champion in School Cricket:</strong> Hemasai was a star player in the school cricket team and led the team to victory in several tournaments, showcasing leadership, strategy, and athletic ability.
+                    </p>
+                    <p class="achievement-description">
+                        Known for being a top-order batsman and bowler, Hemasai played a crucial role in the team's success.
+                    </p>
+                    <p class="achievement-description">
+                        <strong>Champion in School Kabaddi:</strong> As a key player in school kabaddi, Hemasai helped the team win district and regional championships, excelling as both a defender and raider.
+                    </p>
+                    <p class="achievement-description">
+                        His skills in strategic gameplay, quick reflexes, and physical endurance played a major role in the team's achievements.
+                    </p>
+                </div>
+                <div class="achievement-image-container">
+                    <div class="achievement-image">
+                        <img src="6.jpg" alt="School Kabaddi Championship">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Peta Hema Sai Reddy</h3>
+                    <p>AIML Student & Developer with a passion for innovation and problem-solving.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/hemasai-reddy-294ab8288/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/BunnyHemaSaiReddy/" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://leetcode.com/u/Pete_HemaSaiReddy/" class="social-link" target="_blank"><i class="fas fa-code"></i></a>
+                        <a href="https://www.credly.com/users/hema-sai-reddy/" class="social-link" target="_blank"><i class="fas fa-trophy"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html">Home</a></li>
+                        <li class="footer-link"><a href="education.html">Education</a></li>
+                        <li class="footer-link"><a href="skills.html">Skills</a></li>
+                        <li class="footer-link"><a href="projects.html">Projects</a></li>
+                        <li class="footer-link"><a href="internships.html">Internships</a></li>
+                        <li class="footer-link"><a href="certificates.html">Certifications</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> bunnyhemasaireddy@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> 6300030941</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Pakala Mandal, Tirupati District, AP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Peta Hema Sai Reddy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>

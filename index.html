@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Hema Sai Reddy | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Custom styles for skills, languages, and strengths */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-progress {
+            margin-bottom: 1.25rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-name i {
+            color: var(--primary);
+        }
+        
+        .skill-percentage {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: rgba(99, 102, 241, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, #818cf8 100%);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+        }
+        
+        .skill-progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .language-item, .strength-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: rgba(99, 102, 241, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .language-item:hover, .strength-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .language-icon, .strength-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .language-details, .strength-details {
+            flex: 1;
+        }
+        
+        .language-name, .strength-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+        
+        .language-level, .strength-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Hero image size adjustment */
+        .hero-image {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Hamburger menu fix */
+        .hamburger {
+            cursor: pointer;
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            z-index: 101;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 250px;
+                background: var(--card);
+                flex-direction: column;
+                padding: 80px 20px 20px;
+                z-index: 100;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease-in-out;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+        }
+        
+        /* Theme toggle button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        #theme-toggle:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Profile image styling */
+        .profile-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-image-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Peta Hema Sai Reddy</a>
+            <nav style="display: flex; align-items: center;">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="certificates.html" class="nav-link">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                </ul>
+                
+                <div style="display: flex; align-items: center; margin-left: auto;">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" style="margin-right: 10px;">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container" style="display: flex; align-items: center; gap: 2rem; max-width: 1000px;">
+            <div class="hero-content">
+                <h1 class="hero-title">Peta Hema Sai Reddy</h1>
+                <h2 class="hero-subtitle">AIML Student & Developer</h2>
+                <div class="typed-text" id="typed-text">Passionate about <span id="changing-text">Artificial Intelligence</span></div>
+                <p class="animate-fadeInUp delay-3">Building innovative solutions with AI and Machine Learning to solve real-world problems.</p>
+                <div class="hero-cta animate-fadeInUp delay-4">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="projects.html" class="btn btn-outline">See My Work</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-image-container">
+                    <img src="profile.jpeg" alt="Peta Hema Sai Reddy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card animate-fadeInUp">
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Profile Details</h3>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td><strong>Father's Name:</strong></td>
+                                <td>P. Gopi Reddy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mother's Name:</strong></td>
+                                <td>P. Sasi Kala</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phone No:</strong></td>
+                                <td>6300030941</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td>bunnyhemasaireddy@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Address:</strong></td>
+                                <td>Bandaralpalli Village, Pakala Mandal, Tirupati District, AP, India</td>
+                            </tr>
+                        </table>
+                        
+                        <h3 style="margin-top: 1.5rem;">About Me</h3>
+                        <p>
+                            I am an enthusiastic Python developer and AIML student. I started exploring computer science after completing my secondary education and developed a passion for Artificial Intelligence and Machine Learning.
+                        </p>
+                        <p>
+                            Currently pursuing B.Tech in AIML with a focus on developing practical applications that solve real-world problems.
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Hobbies & Interests</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Enjoy playing sports like cricket and kabaddi to stay active and team-oriented</li>
+                            <li>Love watching movies and listening to music to relax and stay creatively inspired</li>
+                            <li>Passionate about exploring new Python modules and technologies</li>
+                            <li>Follow cricket enthusiastically and enjoy spending time with friends</li>
+                            <li>Enjoy travelling to experience new cultures and environments</li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 1.5rem;">Social Media</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/hemasai-reddy-294ab8288/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/BunnyHemaSaiReddy/" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://leetcode.com/u/Pete_HemaSaiReddy/" class="social-link" target="_blank"><i class="fas fa-code"></i></a>
+                            <a href="https://www.credly.com/users/hema-sai-reddy/" class="social-link" target="_blank"><i class="fas fa-trophy"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="card animate-fadeInUp">
+                <h3>Technical Skills</h3>
+                <div class="skills-grid">
+                    <div>
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fab fa-python"></i> Python Development</div>
+                                <div class="skill-percentage">95%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fas fa-brain"></i> Machine Learning</div>
+                                <div class="skill-percentage">90%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fas fa-network-wired"></i> Deep Learning</div>
+                                <div class="skill-percentage">85%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fas fa-database"></i> MySQL</div>
+                                <div class="skill-percentage">80%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fas fa-code"></i> Web Development</div>
+                                <div class="skill-percentage">85%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fas fa-chart-bar"></i> Data Visualization</div>
+                                <div class="skill-percentage">88%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fab fa-java"></i> Core JAVA</div>
+                                <div class="skill-percentage">75%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-info">
+                                <div class="skill-name"><i class="fas fa-project-diagram"></i> DSA in Python</div>
+                                <div class="skill-percentage">82%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress-fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 1.5rem;">Languages</h3>
+                <div class="skills-grid">
+                    <div class="language-item">
+                        <div class="language-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="language-details">
+                            <h4 class="language-name">Telugu</h4>
+                            <div class="language-level">Mother Tongue - Native Proficiency</div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-item">
+                        <div class="language-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="language-details">
+                            <h4 class="language-name">English</h4>
+                            <div class="language-level">Professional Working Proficiency</div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-item">
+                        <div class="language-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <div class="language-details">
+                            <h4 class="language-name">Hindi</h4>
+                            <div class="language-level">Limited Working Proficiency - Understand but unable to speak fluently</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 1.5rem;">Strengths</h3>
+                <div class="skills-grid">
+                    <div class="strength-item">
+                        <div class="strength-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="strength-details">
+                            <h4 class="strength-name">Quick Learner</h4>
+                            <div class="strength-description">Ability to grasp new concepts and technologies rapidly</div>
+                        </div>
+                    </div>
+                    
+                    <div class="strength-item">
+                        <div class="strength-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="strength-details">
+                            <h4 class="strength-name">Problem-Solving</h4>
+                            <div class="strength-description">Analytical approach to solving complex problems</div>
+                        </div>
+                    </div>
+                    
+                    <div class="strength-item">
+                        <div class="strength-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="strength-details">
+                            <h4 class="strength-name">Adaptability</h4>
+                            <div class="strength-description">Flexible in changing environments and requirements</div>
+                        </div>
+                    </div>
+                    
+                    <div class="strength-item">
+                        <div class="strength-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="strength-details">
+                            <h4 class="strength-name">Leadership</h4>
+                            <div class="strength-description">Ability to guide and motivate teams effectively</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Quicklinks -->
+    <section class="section" style="background-color: rgba(99, 102, 241, 0.05);">
+        <div class="container">
+            <h2 class="section-title">Explore My Portfolio</h2>
+            <div class="projects-grid">
+                <a href="education.html" class="card animate-fadeInUp delay-1" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Education</h3>
+                        <p>My academic journey and achievements</p>
+                    </div>
+                </a>
+                
+                <a href="projects.html" class="card animate-fadeInUp delay-3" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Projects</h3>
+                        <p>Showcase of my technical projects</p>
+                    </div>
+                </a>
+                
+                <a href="internships.html" class="card animate-fadeInUp delay-4" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-briefcase" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Internships</h3>
+                        <p>Professional experience and internships</p>
+                    </div>
+                </a>
+                
+                <a href="achievements.html" class="card animate-fadeInUp delay-5" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-trophy" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Achievements</h3>
+                        <p>Awards and recognition received</p>
+                    </div>
+                </a>
+                
+                <a href="certificates.html" class="card animate-fadeInUp delay-6" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-certificate" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Certifications</h3>
+                        <p>Professional certifications and courses</p>
+                    </div>
+                </a>
+                <a href="remain/certificates.html" class="card animate-fadeInUp delay-2" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-code" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Certificates</h3>
+                        <p>Technical skills and competencies</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="card animate-fadeInUp">
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-envelope"></i> bunnyhemasaireddy@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> 6300030941</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Bandaralpalli Village, Pakala Mandal, Tirupati District, AP, India</p>
+                        
+                        <div class="social-links" style="margin-top: 1.5rem;">
+                            <a href="https://www.linkedin.com/in/hemasai-reddy-294ab8288/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/BunnyHemaSaiReddy/" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://leetcode.com/u/Pete_HemaSaiReddy/" class="social-link" target="_blank"><i class="fas fa-code"></i></a>
+                            <a href="https://www.credly.com/users/hema-sai-reddy/" class="social-link" target="_blank"><i class="fas fa-trophy"></i></a>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <form>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="name" style="display: block; margin-bottom: 0.5rem;">Name</label>
+                                <input type="text" id="name" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                                <input type="email" id="email" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="message" style="display: block; margin-bottom: 0.5rem;">Message</label>
+                                <textarea id="message" rows="4" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Peta Hema Sai Reddy</h3>
+                    <p>AIML Student & Developer with a passion for innovation and problem-solving.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/hemasai-reddy-294ab8288/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/BunnyHemaSaiReddy/" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://leetcode.com/u/Pete_HemaSaiReddy/" class="social-link" target="_blank"><i class="fas fa-code"></i></a>
+                        <a href="https://www.credly.com/users/hema-sai-reddy/" class="social-link" target="_blank"><i class="fas fa-trophy"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html">Home</a></li>
+                        <li class="footer-link"><a href="education.html">Education</a></li>
+                       
+                        <li class="footer-link"><a href="projects.html">Projects</a></li>
+                        <li class="footer-link"><a href="internships.html">Internships</a></li>
+                        <li class="footer-link"><a href="certificates.html">Certifications</a></li>
+                        <li class="footer-link"><a href="remain/certificates.html">Certificates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> bunnyhemasaireddy@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> 6300030941</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Pakala Mandal, Tirupati District, AP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Peta Hema Sai Reddy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>

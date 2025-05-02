@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internships - Peta Hema Sai Reddy</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .internship-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+        
+        .internship-timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 6px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            animation-duration: 0.8s;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-container.left {
+            left: 0;
+        }
+        
+        .timeline-container.right {
+            left: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background: var(--primary);
+            border: 4px solid white;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+        
+        .timeline-container.right::after {
+            left: -13px;
+        }
+        
+        .internship-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .internship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
+        }
+        
+        .internship-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .internship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .internship-card:hover .internship-image img {
+            transform: scale(1.05);
+        }
+        
+        .internship-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .internship-content {
+            padding: 1.5rem;
+        }
+        
+        .internship-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .internship-company {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .internship-company i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .internship-date {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .internship-date i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .internship-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .internship-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .internship-skill {
+            font-size: 0.8rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+        }
+        
+        .view-certificate {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .view-certificate:hover {
+            color: var(--primary-dark);
+        }
+        
+        .view-certificate i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .internship-timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0;
+            }
+            
+            .timeline-container.right {
+                left: 0;
+            }
+            
+            .timeline-container.left::after, 
+            .timeline-container.right::after {
+                left: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Peta Hema Sai Reddy</a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="internships.html" class="nav-link active">Internships</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="certificates.html" class="nav-link">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                </ul>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Professional Internships</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">A showcase of my practical experience and industry exposure through internships with leading organizations.</p>
+        </div>
+    </section>
+
+    <!-- Internships Timeline Section -->
+    <section class="section">
+        <div class="container">
+            <div class="internship-timeline">
+                <!-- IUCEE Internship -->
+                <div class="timeline-container left animate-fadeInUp">
+                    <div class="internship-card">
+                        <div class="internship-badge"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="internship-image" onclick="openModal('iucee.png')">
+                            <img src="iucee.png" alt="IUCEE Certificate">
+                        </div>
+                        <div class="internship-content">
+                            <h3 class="internship-title">Artificial Intelligence for All</h3>
+                            <div class="internship-company">
+                                <i class="fas fa-building"></i> IUCEE - Mohan Babu University
+                            </div>
+                            <div class="internship-date">
+                                <i class="fas fa-calendar-alt"></i> May to July 2024
+                            </div>
+                            <p class="internship-description">
+                                This program, hosted by the Indo Universal Collaboration for Engineering Education (IUCEE), focused on the fundamentals of Artificial Intelligence (AI) for individuals from diverse backgrounds. Over the course of three months, participants attended 8 webinars and worked on assignments designed to enhance their understanding of AI concepts and applications.
+                                <br><br>
+                                The program was facilitated by Dr. Rao Vemuri, a globally recognized expert from the University of California Davis (Retd), and covered various AI topics including machine learning fundamentals and real-world AI applications.
+                            </p>
+                            <div class="internship-skills">
+                                <span class="internship-skill">Artificial Intelligence</span>
+                                <span class="internship-skill">Machine Learning</span>
+                                <span class="internship-skill">AI Applications</span>
+                            </div>
+                            <a class="view-certificate" onclick="openModal('iucee.png')">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IBM SkillsBuild & CSRBOX Internship -->
+                <div class="timeline-container right animate-fadeInUp delay-1">
+                    <div class="internship-card">
+                        <div class="internship-badge"><i class="fas fa-chart-bar"></i></div>
+                        <div class="internship-image" onclick="openModal('ibm-intern.png')">
+                            <img src="ibm-intern.png" alt="IBM SkillsBuild & CSRBOX Internship Certificate">
+                        </div>
+                        <div class="internship-content">
+                            <h3 class="internship-title">Data Visualization Internship</h3>
+                            <div class="internship-company">
+                                <i class="fas fa-building"></i> IBM SkillsBuild & CSRBOX Foundation
+                            </div>
+                            <div class="internship-date">
+                                <i class="fas fa-calendar-alt"></i> 21st December 2023 to 4th January 2024
+                            </div>
+                            <p class="internship-description">
+                                This internship provided an opportunity to learn and apply data visualization techniques using AI tools, with a major focus on the Sweetviz and D-Tale libraries. We worked with tools like Pandas, Matplotlib, Sweetviz, and D-Tale to analyze datasets and create insightful visualizations.
+                                <br><br>
+                                The primary objective was to leverage Sweetviz and D-Tale to analyze and visualize data, enhancing the decision-making process. Throughout the internship, we submitted data visualizations for the given dataset, gaining hands-on experience with advanced data analysis and visualization techniques.
+                            </p>
+                            <div class="internship-skills">
+                                <span class="internship-skill">Data Visualization</span>
+                                <span class="internship-skill">Sweetviz</span>
+                                <span class="internship-skill">D-Tale</span>
+                                <span class="internship-skill">Pandas</span>
+                                <span class="internship-skill">Matplotlib</span>
+                            </div>
+                            <a class="view-certificate" onclick="openModal('ibm-intern.png')">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Google AI-ML Internship -->
+                <div class="timeline-container left animate-fadeInUp delay-2">
+                    <div class="internship-card">
+                        <div class="internship-badge"><i class="fas fa-robot"></i></div>
+                        <div class="internship-image" onclick="openModal('google.jpg')">
+                            <img src="google.jpg" alt="Google AI-ML Internship Certificate">
+                        </div>
+                        <div class="internship-content">
+                            <h3 class="internship-title">AI-ML Virtual Internship</h3>
+                            <div class="internship-company">
+                                <i class="fas fa-building"></i> Google for Developers
+                            </div>
+                            <div class="internship-date">
+                                <i class="fas fa-calendar-alt"></i> October - December 2024
+                            </div>
+                            <p class="internship-description">
+                                This internship allowed me to explore Artificial Intelligence and Machine Learning, where I had the chance to work on real-world problems and apply AI-ML techniques. The internship also provided exposure to industry-leading tools and technologies from Google.
+                                <br><br>
+                                During this internship, I learned about image analysis and was introduced to TensorFlow. I created a prediction model for image data using TensorFlow and the Keras module, which significantly enhanced my understanding of image analysis techniques and how AI can be applied to solve real-world problems.
+                            </p>
+                            <div class="internship-skills">
+                                <span class="internship-skill">Artificial Intelligence</span>
+                                <span class="internship-skill">Machine Learning</span>
+                                <span class="internship-skill">TensorFlow</span>
+                                <span class="internship-skill">Keras</span>
+                                <span class="internship-skill">Image Analysis</span>
+                            </div>
+                            <a class="view-certificate" onclick="openModal('google.jpg')">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Skills Gained Section -->
+    <section class="section" style="background-color: rgba(99, 102, 241, 0.05);">
+        <div class="container">
+            <h2 class="section-title">Key Skills Gained From Internships</h2>
+            
+            <div class="card" style="padding: 2rem; text-align: center;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                    <div style="flex: 0 1 200px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Technical Skills</h3>
+                        <p>Hands-on experience with tools like TensorFlow, Keras, Pandas, and data visualization libraries including Sweetviz and D-Tale.</p>
+                    </div>
+                    
+                    <div style="flex: 0 1 200px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI & ML Expertise</h3>
+                        <p>Deep understanding of AI/ML concepts and their practical applications in image analysis and data-driven decision making.</p>
+                    </div>
+                    
+                    <div style="flex: 0 1 200px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Project Management</h3>
+                        <p>Experience in completing projects within deadlines, managing tasks, and delivering high-quality results.</p>
+                    </div>
+                    
+                    <div style="flex: 0 1 200px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Professional Growth</h3>
+                        <p>Developed professional competencies through collaboration with industry experts and peers in various domains.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for displaying certificates -->
+    <div id="certificateModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Certificate">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Peta Hema Sai Reddy</h3>
+                    <p>AIML Student & Developer with a passion for innovation and problem-solving.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/hemasai-reddy-294ab8288/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/BunnyHemaSaiReddy/" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://leetcode.com/u/Pete_HemaSaiReddy/" class="social-link" target="_blank"><i class="fas fa-code"></i></a>
+                        <a href="https://www.credly.com/users/hema-sai-reddy/" class="social-link" target="_blank"><i class="fas fa-trophy"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html">Home</a></li>
+                        <li class="footer-link"><a href="education.html">Education</a></li>
+                        <li class="footer-link"><a href="skills.html">Skills</a></li>
+                        <li class="footer-link"><a href="projects.html">Projects</a></li>
+                        <li class="footer-link"><a href="internships.html">Internships</a></li>
+                        <li class="footer-link"><a href="certificates.html">Certifications</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> bunnyhemasaireddy@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> 6300030941</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Pakala Mandal, Tirupati District, AP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Peta Hema Sai Reddy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Modal functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('certificateModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modalImg.src = imageSrc;
+            modal.style.display = 'flex';
+            
+            // Prevent scrolling on body when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside the image
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('certificateModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html> 

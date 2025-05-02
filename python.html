@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+           
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #5071df; /* Blue color on hover */
+
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+        }
+
+        .scroll-to-top:hover {
+            
+            background-color: #5071df; /* Blue color on hover */
+
+        }
+        .row {
+            background-color: #f0f0f0; /* Light gray background */
+            border-radius: 5%; /* Rounded circle shape */
+            display: flex; /* To align content inside */
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            padding: 20px; /* Add padding for spacing */
+             /* Set a height for the circle (equal to width for perfect circle) */
+            margin: 20px auto; /* Center the row in the parent container */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for optical effect */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+        }
+        
+        <!-- .row:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        } -->
+        
+        .certificate-image {
+            width: 100%;
+            max-width: 410px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .table-container {
+            width: 50%;
+            
+        }
+        .cert-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .cert-column {
+            width: 48%;
+        }
+        #image-container {
+            width: 100vw;  /* Full width of the viewport */
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            justify-content: center; /* Center image horizontally */
+            align-items: center; /* Center image vertically */
+            overflow: hidden; /* Hide overflow if image exceeds container */
+        }
+    
+        #image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Ensure image fits within the container without distortion */
+        }
+        
+    </style>
+    <script>
+        function openImage(imageSrc) {
+            // Select a container to display the image, for example, a div with ID 'image-container'
+            var container = document.getElementById('image-container');
+            container.innerHTML = '<img src="' + imageSrc + '" style="width: 100%; height: auto;"/>';
+        }
+        window.onscroll = function() {
+            let button = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- First Row: Sanfoundry Certificate -->
+        <div>
+            <table colspan="2" class="row">
+                <tr>
+                    <td colspan="2" style="text-align: center; ">
+                        <a href="#image-container"><img src="python/san.png" alt="Sanfoundry Certificate" class="certificate-image" onclick="openImage('python/san.png')"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Table below Sanfoundry -->
+        <table>
+            <tr>
+                <th>Course Name:</th>
+                <td>Python Programming Certification Test</td>
+            </tr>
+            <tr>
+                <th>Issuing Organization:</th>
+                <td>Sanfoundry</td>
+            </tr>
+            <tr>
+                <th>Issue Date:</th>
+                <td>Aug 4, 2024</td>
+            </tr>
+            <tr>
+                <th>Verification Link:</th>
+                <td><a href="https://www.sanfoundry.com/certificate-verification" target="_blank">Verify Certificate</a></td>
+            </tr>
+        </table>
+
+        <!-- Second Row: Google & Scaler Certificates -->
+        <div class="cert-row">
+            <div class="cert-column">
+                <!-- Google Certificate -->
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <a href="#image-container"><img src="python/google.png" alt="Google Certificate" class="certificate-image" onclick="openImage('python/google.png')"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Course Name:</th>
+                        <td>Crash Course on Python</td>
+                    </tr>
+                    <tr>
+                        <th>Issuing Organization:</th>
+                        <td>Google</td>
+                    </tr>
+                    <tr>
+                        <th>Issue Date:</th>
+                        <td>Jun 29, 2024</td>
+                    </tr>
+                    <tr>
+                        <th>Verification Link:</th>
+                        <td><a href="https://coursera.org/verify/5FUFKV9D4DK7" target="_blank">Verify Certificate</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cert-column">
+                <!-- Scaler Certificate -->
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <a href="#image-container"><img src="python/scalar.png" alt="Scaler Certificate" class="certificate-image" onclick="openImage('python/scalar.png')"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Course Name:</th>
+                        <td>Python Course for Beginners</td>
+                    </tr>
+                    <tr>
+                        <th>Issuing Organization:</th>
+                        <td>Scaler</td>
+                    </tr>
+                    <tr>
+                        <th>Issue Date:</th>
+                        <td>May 5, 2024</td>
+                    </tr>
+                    <tr>
+                        <th>Verification Link:</th>
+                        <td><a href="https://www.scaler.com/verify" target="_blank">Verify Certificate</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Third Row: IBM Certificates (ML and Data Science) -->
+        <div class="cert-row">
+            <div class="cert-column">
+                <!-- IBM - Machine Learning -->
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <a href="#image-container"><img src="python/ml-py.png" alt="IBM ML Certificate" class="certificate-image" onclick="openImage('python/ml-py.png')"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Course Name:</th>
+                        <td>Machine Learning with Python - Level 1</td>
+                    </tr>
+                    <tr>
+                        <th>Issuing Organization:</th>
+                        <td>IBM</td>
+                    </tr>
+                    <tr>
+                        <th>Issue Date:</th>
+                        <td>23 Dec 2023</td>
+                    </tr>
+                    <tr>
+                        <th>Verification Link:</th>
+                        <td><a href="https://www.credly.com/go/qB6hZu9" target="_blank">Verify Certificate</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cert-column">
+                <!-- IBM - Data Science -->
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <a href="#image-container"><img src="python/p-data.png" alt="IBM Data Science Certificate" class="certificate-image" onclick="openImage('python/p-data.png')"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Course Name:</th>
+                        <td>Python for Data Science</td>
+                    </tr>
+                    <tr>
+                        <th>Issuing Organization:</th>
+                        <td>IBM</td>
+                    </tr>
+                    <tr>
+                        <th>Issue Date:</th>
+                        <td>26 Dec 2023</td>
+                    </tr>
+                    <tr>
+                        <th>Verification Link:</th>
+                        <td><a href="https://www.credly.com/go/d4ogio" target="_blank">Verify Certificate</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Fourth Row: Remaining Two Certificates -->
+        <div class="cert-row">
+            <div class="cert-column">
+                <!-- Certificate 1 -->
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <a href="#image-container"><img src="python/p-luminious.png" alt="Certificate 1" class="certificate-image" onclick="openImage('python/p-luminious.png')"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Course Name:</th>
+                        <td>Python Programming Certification</td>
+                    </tr>
+                    <tr>
+                        <th>Issuing Organization:</th>
+                        <td>Lumos Learning</td>
+                    </tr>
+                    <tr>
+                        <th>Issue Date:</th>
+                        <td>Sep 1st, 2023</td>
+                    </tr>
+                    <tr>
+                        <th>Verification Link:</th>
+                        <td><a href="https://www.lumoslearning.com" target="_blank">Verify Certificate</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cert-column">
+                <!-- Certificate 2 -->
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <a href="#image-container"><img src="python/p-g.png" alt="Certificate 2" class="certificate-image" onclick="openImage('python/p-g.png')"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Course Name:</th>
+                        <td>Python Programming for Beginners</td>
+                    </tr>
+                    <tr>
+                        <th>Issuing Organization:</th>
+                        <td>Coursera</td>
+                    </tr>
+                    <tr>
+                        <th>Issue Date:</th>
+                        <td>Jul 29, 2024</td>
+                    </tr>
+                    <tr>
+                        <th>Verification Link:</th>
+                        <td><a href="https://coursera.org/verify/6K9GH72D8D94" target="_blank">Verify Certificate</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="image-container"></div>
+    <button class="scroll-to-top" id="scrollToTopBtn" onclick="scrollToTop()">Go to Top</button>
+</body>
+</html>
