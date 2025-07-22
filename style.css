@@ -89,7 +89,7 @@ body {
   color: var(--dark-text-primary);
 }
 
-.dark-theme .hero-image img {
+.dark-theme .hero-imag img {
   border-color: rgba(99, 102, 241, 0.3);
   box-shadow: 0 8px 30px rgba(66, 69, 167, 0.3);
 }
@@ -248,7 +248,7 @@ a:hover {
   z-index: 1;
   opacity: 0;
   transform: translateX(20px);
-  animation: fadeInRight 1s 0.6s forwards;
+  animation: fadeInRight 0s forwards;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,7 +262,7 @@ a:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   border: 5px solid rgba(99, 102, 241, 0.2);
   transition: all 0.5s ease-in-out;
-  animation: pulse 3s infinite ease-in-out;
+  
 }
 
 @keyframes pulse {
